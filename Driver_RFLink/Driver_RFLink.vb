@@ -9,7 +9,7 @@ Imports System.Text.RegularExpressions
 'INFOS 
 '************************************************
 'Le driver communique en "COM" avec l'arduino gateway qui doit implémenter un sketch spécifique compatible RFLink
-'https://sourceforge.net/projects/rflink/
+'http://www.nemcon.nl/blog2/
 '************************************************
 
 Public Class Driver_RFLink
@@ -50,6 +50,32 @@ Public Class Driver_RFLink
     'param avancé
     Dim _Ack As Byte
     Dim _DEBUG As Boolean = False
+    '    Dim _PARAMMODE_1_frequence As Integer = 2 '1 : type frequence (310, 315, 433, 868.30, 868.30 FSK, 868.35, 868.35 FSK, 868.95)
+    '    Dim _PARAMMODE_2_undec As Integer = 0 '2 : UNDEC
+    '    Dim _PARAMMODE_3_novatis As Integer = 0 '3 : novatis --> NOT USED ANYMORE 200
+    '    Dim _PARAMMODE_4_proguard As Integer = 1 '4 : proguard
+    '    Dim _PARAMMODE_5_fs20 As Integer = 1 '5 : FS20
+    '    Dim _PARAMMODE_6_lacrosse As Integer = 1 '6 : Lacrosse
+    '    Dim _PARAMMODE_7_hideki As Integer = 1 '7 : Hideki
+    '    Dim _PARAMMODE_8_ad As Integer = 1 '8 : AD
+    '    Dim _PARAMMODE_9_mertik As Integer = 1 '9 : Mertik 111111
+    '    Dim _PARAMMODE_10_visonic As Integer = 1 '10 : Visonic
+    '    Dim _PARAMMODE_11_ati As Integer = 1 '11 : ATI
+    '    Dim _PARAMMODE_12_oregon As Integer = 1 '12 : Oregon
+    '    Dim _PARAMMODE_13_meiantech As Integer = 1 '13 : Meiantech
+    '    Dim _PARAMMODE_14_heeu As Integer = 1 '14 : HEEU
+    '    Dim _PARAMMODE_15_ac As Integer = 1 '15 : AC
+    '    Dim _PARAMMODE_16_arc As Integer = 1 '16 : ARC
+    '    Dim _PARAMMODE_17_x10 As Integer = 1 '17 : X10 11111111
+    '    Dim _PARAMMODE_18_blindst0 As Integer = 0 '18 : BlindsT0
+    '    Dim _PARAMMODE_19_Imagintronix As Integer = 1 '19 : Imagintronix
+    '    Dim _PARAMMODE_20_sx As Integer = 1 '20 : SX
+    '    Dim _PARAMMODE_21_rsl As Integer = 1 '21 : RSL
+    '    Dim _PARAMMODE_22_lighting4 As Integer = 1 '22 : LIGHTING4
+    '    Dim _PARAMMODE_23_fineoffset As Integer = 1 '23 : FINEOFFSET
+    '    Dim _PARAMMODE_24_rubicson As Integer = 1 '24 : RUBICSON
+    '    Dim _PARAMMODE_25_ae As Integer = 1 '25 : AE
+    '    Dim _PARAMMODE_26_blindst1 As Integer = 1 '26 : BlindsT1
 
 #End Region
 
@@ -305,6 +331,121 @@ Public Class Driver_RFLink
                     _DEBUG = _Parametres.Item(0).Valeur
                     _BAUD = _Parametres.Item(1).Valeur
                     _RCVERROR = _Parametres.Item(2).Valeur
+                    '                    If CStr(_Parametres.Item(1).Valeur).Length = 26 Then
+                    '                        WriteLog("ERR: Anciens Paramétres avancés trouvés. Conversion de l'ancienne valeur au nouveau format. Veuillez vérifier que les nouveaux paramétres sont corrects.")
+                    '                        _PARAMMODE_1_frequence = _Parametres.Item(1).Valeur.Substring(0, 1)
+                    '                        _PARAMMODE_2_undec = _Parametres.Item(1).Valeur.Substring(1, 1)
+                    '                        _PARAMMODE_3_novatis = _Parametres.Item(1).Valeur.Substring(2, 1)
+                    '                        _PARAMMODE_4_proguard = _Parametres.Item(1).Valeur.Substring(3, 1)
+                    '                        _PARAMMODE_5_fs20 = _Parametres.Item(1).Valeur.Substring(4, 1)
+                    '                        _PARAMMODE_6_lacrosse = _Parametres.Item(1).Valeur.Substring(5, 1)
+                    '                        _PARAMMODE_7_hideki = _Parametres.Item(1).Valeur.Substring(6, 1)
+                    '                        _PARAMMODE_8_ad = _Parametres.Item(1).Valeur.Substring(7, 1)
+                    '                        _PARAMMODE_9_mertik = _Parametres.Item(1).Valeur.Substring(8, 1)
+                    '                        _PARAMMODE_10_visonic = _Parametres.Item(1).Valeur.Substring(9, 1)
+                    '                        _PARAMMODE_11_ati = _Parametres.Item(1).Valeur.Substring(10, 1)
+                    '                        _PARAMMODE_12_oregon = _Parametres.Item(1).Valeur.Substring(11, 1)
+                    '                        _PARAMMODE_13_meiantech = _Parametres.Item(1).Valeur.Substring(12, 1)
+                    '                        _PARAMMODE_14_heeu = _Parametres.Item(1).Valeur.Substring(13, 1)
+                    '                        _PARAMMODE_15_ac = _Parametres.Item(1).Valeur.Substring(14, 1)
+                    '                        _PARAMMODE_16_arc = _Parametres.Item(1).Valeur.Substring(15, 1)
+                    '                        _PARAMMODE_17_x10 = _Parametres.Item(1).Valeur.Substring(16, 1)
+                    '                        _PARAMMODE_18_blindst0 = _Parametres.Item(1).Valeur.Substring(17, 1)
+                    '                        _PARAMMODE_19_Imagintronix = _Parametres.Item(1).Valeur.Substring(18, 1)
+                    '                        _PARAMMODE_20_sx = _Parametres.Item(1).Valeur.Substring(19, 1)
+                    '                        _PARAMMODE_21_rsl = _Parametres.Item(1).Valeur.Substring(20, 1)
+                    '                        _PARAMMODE_22_lighting4 = _Parametres.Item(1).Valeur.Substring(21, 1)
+                    '                        _PARAMMODE_23_fineoffset = _Parametres.Item(1).Valeur.Substring(22, 1)
+                    '                        _PARAMMODE_24_rubicson = _Parametres.Item(1).Valeur.Substring(23, 1)
+                    '                        _PARAMMODE_25_ae = _Parametres.Item(1).Valeur.Substring(24, 1)
+                    '                        _PARAMMODE_26_blindst1 = _Parametres.Item(1).Valeur.Substring(25, 1)
+                    '
+                    '                        _Parametres.Item(1).Valeur = _PARAMMODE_1_frequence
+                    '                        _Parametres.Item(2).Valeur = _PARAMMODE_2_undec
+                    '                        _Parametres.Item(3).Valeur = _PARAMMODE_3_novatis
+                    '                        _Parametres.Item(4).Valeur = _PARAMMODE_4_proguard
+                    '                        _Parametres.Item(5).Valeur = _PARAMMODE_5_fs20
+                    '                        _Parametres.Item(6).Valeur = _PARAMMODE_6_lacrosse
+                    '                        _Parametres.Item(7).Valeur = _PARAMMODE_7_hideki
+                    '                        _Parametres.Item(8).Valeur = _PARAMMODE_8_ad
+                    '                        _Parametres.Item(9).Valeur = _PARAMMODE_9_mertik
+                    '                        _Parametres.Item(10).Valeur = _PARAMMODE_10_visonic
+                    '                        _Parametres.Item(11).Valeur = _PARAMMODE_11_ati
+                    '                        _Parametres.Item(12).Valeur = _PARAMMODE_12_oregon
+                    '                        _Parametres.Item(13).Valeur = _PARAMMODE_13_meiantech
+                    '                        _Parametres.Item(14).Valeur = _PARAMMODE_14_heeu
+                    '                        _Parametres.Item(15).Valeur = _PARAMMODE_15_ac
+                    '                        _Parametres.Item(16).Valeur = _PARAMMODE_16_arc
+                    '                        _Parametres.Item(17).Valeur = _PARAMMODE_17_x10
+                    '                        _Parametres.Item(18).Valeur = _PARAMMODE_18_blindst0
+                    '                        _Parametres.Item(19).Valeur = _PARAMMODE_19_Imagintronix
+                    '                        _Parametres.Item(20).Valeur = _PARAMMODE_20_sx
+                    '                        _Parametres.Item(21).Valeur = _PARAMMODE_21_rsl
+                    '                        _Parametres.Item(22).Valeur = _PARAMMODE_22_lighting4
+                    '                        _Parametres.Item(23).Valeur = _PARAMMODE_23_fineoffset
+                    '                        _Parametres.Item(24).Valeur = _PARAMMODE_24_rubicson
+                    '                        _Parametres.Item(25).Valeur = _PARAMMODE_25_ae
+                    '                        _Parametres.Item(26).Valeur = _PARAMMODE_26_blindst1
+                    '
+                    '                    ElseIf CStr(_Parametres.Item(1).Valeur).Length > 1 Then
+                    '                        WriteLog("ERR: Erreur dans les paramétres avancés. utilisation des valeur par défaut")
+                    '                        _Parametres.Item(1).Valeur = _PARAMMODE_1_frequence
+                    '                        _Parametres.Item(2).Valeur = _PARAMMODE_2_undec
+                    '                        _Parametres.Item(3).Valeur = _PARAMMODE_3_novatis
+                    '                        _Parametres.Item(4).Valeur = _PARAMMODE_4_proguard
+                    '                        _Parametres.Item(5).Valeur = _PARAMMODE_5_fs20
+                    '                        _Parametres.Item(6).Valeur = _PARAMMODE_6_lacrosse
+                    '                        _Parametres.Item(7).Valeur = _PARAMMODE_7_hideki
+                    '                        _Parametres.Item(8).Valeur = _PARAMMODE_8_ad
+                    '                        _Parametres.Item(9).Valeur = _PARAMMODE_9_mertik
+                    '                        _Parametres.Item(10).Valeur = _PARAMMODE_10_visonic
+                    '                        _Parametres.Item(11).Valeur = _PARAMMODE_11_ati
+                    '                        _Parametres.Item(12).Valeur = _PARAMMODE_12_oregon
+                    '                        _Parametres.Item(13).Valeur = _PARAMMODE_13_meiantech
+                    '                        _Parametres.Item(14).Valeur = _PARAMMODE_14_heeu
+                    '                        _Parametres.Item(15).Valeur = _PARAMMODE_15_ac
+                    '                        _Parametres.Item(16).Valeur = _PARAMMODE_16_arc
+                    '                        _Parametres.Item(17).Valeur = _PARAMMODE_17_x10
+                    '                        _Parametres.Item(18).Valeur = _PARAMMODE_18_blindst0
+                    '                        _Parametres.Item(19).Valeur = _PARAMMODE_19_Imagintronix
+                    '                        _Parametres.Item(20).Valeur = _PARAMMODE_20_sx
+                    '                        _Parametres.Item(21).Valeur = _PARAMMODE_21_rsl
+                    '                        _Parametres.Item(22).Valeur = _PARAMMODE_22_lighting4
+                    '                        _Parametres.Item(23).Valeur = _PARAMMODE_23_fineoffset
+                    '                        _Parametres.Item(24).Valeur = _PARAMMODE_24_rubicson
+                    '                        _Parametres.Item(25).Valeur = _PARAMMODE_25_ae
+                    '                        _Parametres.Item(26).Valeur = _PARAMMODE_26_blindst1
+                    '
+                    '                    Else
+                    '                        'situation normale, on recupere chaque parametre
+                    '                        _PARAMMODE_1_frequence = _Parametres.Item(1).Valeur
+                    '                        _PARAMMODE_2_undec = _Parametres.Item(2).Valeur
+                    '                        _PARAMMODE_3_novatis = _Parametres.Item(3).Valeur
+                    '                        _PARAMMODE_4_proguard = _Parametres.Item(4).Valeur
+                    '                        _PARAMMODE_5_fs20 = _Parametres.Item(5).Valeur
+                    '                        _PARAMMODE_6_lacrosse = _Parametres.Item(6).Valeur
+                    '                        _PARAMMODE_7_hideki = _Parametres.Item(7).Valeur
+                    '                        _PARAMMODE_8_ad = _Parametres.Item(8).Valeur
+                    '                        _PARAMMODE_9_mertik = _Parametres.Item(9).Valeur
+                    '                        _PARAMMODE_10_visonic = _Parametres.Item(10).Valeur
+                    '                        _PARAMMODE_11_ati = _Parametres.Item(11).Valeur
+                    '                        _PARAMMODE_12_oregon = _Parametres.Item(12).Valeur
+                    '                        _PARAMMODE_13_meiantech = _Parametres.Item(13).Valeur
+                    '                        _PARAMMODE_14_heeu = _Parametres.Item(14).Valeur
+                    '                        _PARAMMODE_15_ac = _Parametres.Item(15).Valeur
+                    '                        _PARAMMODE_16_arc = _Parametres.Item(16).Valeur
+                    '                        _PARAMMODE_17_x10 = _Parametres.Item(17).Valeur
+                    '                        _PARAMMODE_18_blindst0 = _Parametres.Item(18).Valeur
+                    '                        _PARAMMODE_19_Imagintronix = _Parametres.Item(19).Valeur
+                    '                        _PARAMMODE_20_sx = _Parametres.Item(20).Valeur
+                    '                        _PARAMMODE_21_rsl = _Parametres.Item(21).Valeur
+                    '                        _PARAMMODE_22_lighting4 = _Parametres.Item(22).Valeur
+                    '                        _PARAMMODE_23_fineoffset = _Parametres.Item(23).Valeur
+                    '                        _PARAMMODE_24_rubicson = _Parametres.Item(24).Valeur
+                    '                        _PARAMMODE_25_ae = _Parametres.Item(25).Valeur
+                    '                        _PARAMMODE_26_blindst1 = _Parametres.Item(26).Valeur
+                    '                    End If
+
                 Catch ex As Exception
                     _Server.Log(TypeLog.ERREUR, TypeSource.DRIVER, Me.Nom & " Start", "ERR: Erreur dans les paramétres avancés. utilisation des valeur par défaut" & ex.Message)
                     _DEBUG = False
@@ -477,399 +618,6 @@ Public Class Driver_RFLink
                     WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
                     Exit Sub
             End Select
-            '            If Command = "VAR" Then
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_VAR1"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";24;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_VAR V_VAR1 Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case "V_VAR2"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";25;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_VAR V_VAR2 Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case "V_VAR3"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";26;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_VAR V_VAR3 Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case "V_VAR4"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";27;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_VAR V_VAR4 Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case "V_VAR5"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";28;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_VAR V_VAR5 Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "UP" Then
-            '                ' S_COVER
-            '                ' V_UP (Window covering. Up)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_UP"
-            '                        RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";29;0"
-            '                        'If Not IsNothing(Parametre1) Then
-            '                        'RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";29;" & Parametre1
-            '                        'Else
-            '                        'WriteLog("ERR: V_UP Il manque un parametre pour (" & Objet.Name & ")")
-            '                        'Exit Sub
-            '                        'End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "DOWN" Then
-            '                ' S_COVER
-            '                ' V_DOWN (Window covering. Down)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_DOWN"
-            '                        RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";30;0"
-            '                        ' If Not IsNothing(Parametre1) Then
-            '                        'RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";30;" & Parametre1
-            '                        'Else
-            '                        'WriteLog("ERR: V_DOWN Il manque un parametre pour (" & Objet.Name & ")")
-            '                        'Exit Sub
-            '                        'End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "STOP" Then
-            '                ' S_COVER
-            '                ' V_STOP (Window covering. Stop)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_STOP"
-            '                        RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";31;0"
-            '                        'If Not IsNothing(Parametre1) Then
-            '                        'RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";31;" & Parametre1
-            '                        'Else
-            '                        'WriteLog("ERR: V_STOP Il manque un parametre pour (" & Objet.Name & ")")
-            '                        'Exit Sub
-            '                        'End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "IRSEND" Then
-            '                ' S_IR
-            '                ' V_IR_SEND (This message contains a received IR-command)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_IR_SEND"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";32;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_IR_SEND Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "LOCKSTATUS" Then
-            '                ' S_LOCK
-            '                ' V_LOCK_STATUS (Set or get lock status. 1=Locked, 0=Unlocked)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_LOCK_STATUS"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";36;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_LOCK_STATUS Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '                ' S_DUST, S_AIR_QUALITY, S_SOUND(dB), S_VIBRATION(hz), S_LIGHT_LEVEL(lux)
-            '                ' V_LEVEL (Used for sending level-value)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_LEVEL"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";37;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_LEVEL Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "COLORSENSOR" Then
-            '                ' S_RGB_LIGHT, S_COLOR_SENSOR
-            '                ' V_RGB (RGB value transmitted as ASCII hex string (I.e "ff0000" for red))
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_RGB"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";40;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_RGB Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "RGB" Then
-            '                ' S_RGBW_LIGHT
-            '                ' V_RGBW (RGBW value transmitted as ASCII hex string (I.e "ff0000ff" for red + full white))
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_RGBW"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";41;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_RGBW Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "HVACSETPOINTCOOL" Then
-            '                ' S_HVAC
-            '                ' V_HVAC_SETPOINT_COOL (HVAC cold setpoint)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_HVAC_SETPOINT_COOL"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";44;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_HVAC_SETPOINT_COOL Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "HVACSETPOINTHEAT" Then
-            '                ' S_HVAC, S_HEATER
-            '                ' V_HVAC_SETPOINT_HEAT (HVAC/Heater setpoint)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_HVAC_SETPOINT_HEAT"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";45;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_HVAC_SETPOINT_HEAT Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "HVACFLOWMODE" Then
-            '                ' S_HVAC
-            '                ' V_HVAC_FLOW_MODE (Flow mode for HVAC ("Auto", "ContinuousOn", "PeriodicOn"))
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_HVAC_FLOW_MODE"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";46;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_HVAC_FLOW_MODE Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "HVACSPEED" Then
-            '                ' S_HVAC, S_HEATER
-            '                ' V_HVAC_SPEED (HVAC/Heater fan speed ("Min", "Normal", "Max", "Auto"))
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_HVAC_SPEED"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";21;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_HVAC_SPEED Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "HVACFLOWSTATE" Then
-            '                ' S_HVAC, S_HEATER
-            '                ' V_HVAC_FLOW_STATE (Mode of header. One of "Off", "HeatOn", "CoolOn", or "AutoChangeOver")
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_HVAC_FLOW_STATE"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";22;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_HVAC_FLOW_STATE Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "LIGHTLEVEL" Then
-            '                ' S_LIGHT_LEVEL
-            '                ' V_LIGHT_LEVEL (Uncalibrated light level. 0-100%. Use V_LEVEL for light level in lux.)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_LIGHT_LEVEL"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";23;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_LIGHT_LEVEL Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "SCENEON" Then
-            '                ' S_SCENE_CONTROLLER
-            '                ' V_SCENE_ON (Turn on a scene)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_SCENE_ON"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";19;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_SCENE_ON Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "SCENEOFF" Then
-            '                ' S_SCENE_CONTROLLER
-            '                ' V_SCENE_OFF (Turn off a scene)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_SCENE_OFF"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";20;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_SCENE_OFF Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "TRIPPED" Then
-            '                ' S_DOOR, S_MOTION, S_SMOKE, S_SPRINKLER, S_WATER_LEAK, S_SOUND, S_VIBRATION, S_MOISTURE
-            '                ' V_TRIPPED (Tripped status of a security sensor. 1=Tripped, 0=Untripped)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_TRIPPED"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";16;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_TRIPPED Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            ElseIf Command = "ARMED" Then
-            '                ' S_DOOR, S_MOTION, S_SMOKE, S_SPRINKLER, S_WATER_LEAK, S_SOUND, S_VIBRATION, S_MOISTURE
-            '                ' V_ARMED (Armed status of a security sensor. 1=Armed, 0=Bypassed)
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_ARMED"
-            '                        If Not IsNothing(Parametre1) Then
-            '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";15;" & Parametre1
-            '                        Else
-            '                            WriteLog("ERR: V_ARMED Il manque un parametre pour (" & Objet.Name & ")")
-            '                            Exit Sub
-            '                        End If
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '                '            ElseIf Command = "PERCENTAGE" Then
-            '                '                ' S_DIMMER
-            '                '                ' V_PERCENTAGE (Percentage value. 0-100 (%))
-            '                '                Select Case UCase(Objet.Modele)
-            '                '                    Case "V_PERCENTAGE"
-            '                '                        If Not IsNothing(Parametre1) Then
-            '                '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";3;" & Parametre1
-            '                '                        Else
-            '                '                            WriteLog("ERR: V_PERCENTAGE Il manque un parametre pour (" & Objet.Name & ")")
-            '                '                            Exit Sub
-            '                '                        End If
-            '                '                    Case Else
-            '                '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                '                        Exit Sub
-            '                '                End Select
-            '                '            ElseIf Command = "DIMMER" Then
-            '                '                ' S_DIMMER
-            '                '                ' V_DIMMER (Deprecated. Alias for V_PERCENTAGE. Dimmer value. 0-100 (%))
-            '                '                Select Case UCase(Objet.Modele)
-            '                '                    Case "V_DIMMER"
-            '                '                        If Not IsNothing(Parametre1) Then
-            '                '                            RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";3;" & Parametre1
-            '                '                        Else
-            '                '                            WriteLog("ERR: V_DIMMER Il manque un parametre pour (" & Objet.Name & ")")
-            '                '                            Exit Sub
-            '                '                        End If
-            '                '                    Case Else
-            '                '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                '                        Exit Sub
-            '                '                End Select
-            '            Else
-            '                Select Case UCase(Objet.Modele)
-            '                    Case "V_LIGHT", "V_STATUS"
-            '                        Select Case Command
-            '                            Case "ON"
-            '                                RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";2;1"
-            '                            Case "OFF"
-            '                                RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";2;0"
-            '                        End Select
-            '                    Case "V_DIMMER", "V_PERCENTAGE"
-            '                        Select Case Command
-            '                            Case "ON"
-            '                                RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";3;100"
-            '                            Case "OFF"
-            '                                RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";3;0"
-            '                            Case "DIM"
-            '                                If Not IsNothing(Parametre1) Then
-            '                                    If IsNumeric(Parametre1) Then
-            '                                        ''Conversion du parametre de % (0 à 100) en 0 à 255
-            '                                        'Parametre1 = CInt(Parametre1 * 255 / 100)
-            '                                        RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";3;" & Parametre1
-            '                                    Else
-            '                                        WriteLog("ERR: WRITE DIM Le parametre " & CStr(Parametre1) & " n'est pas un entier (" & Objet.Name & ")")
-            '                                    End If
-            '                                Else
-            '                                    WriteLog("ERR: WRITE DIM Il manque un parametre (" & Objet.Name & ")")
-            '                                End If
-            '                            Case "PWM"
-            '                                If Not IsNothing(Parametre1) Then
-            '                                    If IsNumeric(Parametre1) Then
-            '                                        If CInt(Parametre1) > 255 Then Parametre1 = 255
-            '                                        If CInt(Parametre1) < 0 Then Parametre1 = 0
-            '                                        'Conversion du parametre de 0 à 255 en % (0 à 100)
-            '                                        Parametre1 = CInt(Parametre1 * 100 / 255)
-            '                                        RFLinkCommand = Objet.Adresse1 & ";" & Objet.adresse2 & ";1;" & _Ack & ";3;" & Parametre1
-            '                                    Else
-            '                                        WriteLog("ERR: WRITE DIM Le parametre " & CStr(Parametre1) & " n'est pas un entier (" & Objet.Name & ")")
-            '                                    End If
-            '                                Else
-            '                                    WriteLog("ERR: WRITE DIM Il manque un parametre (" & Objet.Name & ")")
-            '                                End If
-            '                            Case Else
-            '                                WriteLog("ERR: Send AC : Commande invalide : " & Command & " (ON/OFF/DIM/PWM supporté sur une SORTIE: Analogique write)")
-            '                                Exit Sub
-            '                        End Select
-            '                    Case Else
-            '                        WriteLog("ERR: WRITE : Ce type de capteur/actionneur ne peut pas être piloté : " & Objet.Modele.ToString.ToUpper & " (" & Objet.Name & ")")
-            '                        Exit Sub
-            '                End Select
-            '            End If
 
             WriteLog("DBG: Commande passée au module RFLink : " & RFLinkCommand)
             serialPortObj.WriteLine(RFLinkCommand) ', 0, 8)
@@ -1076,8 +824,8 @@ Public Class Driver_RFLink
                     ' Action après réception d'une trame sur le port COM/USB
                     If UBound(aryLine) >= 5 Then
                         For index As Integer = 5 To UBound(aryLine)
-                            _Server.Log(TypeLog.DEBUG, TypeSource.DRIVER, Me.Nom & " Datareceived", "Type '" & aryLine(4) & "' " & aryLine(0) & ";" & aryLine(2) & ";" & aryLine(3) & ";" & aryLine(index - 1))
-                            '                            traitement(aryLine(0), aryLine(index - 1), aryLine(2), aryLine(3))
+                            _Server.Log(TypeLog.DEBUG, TypeSource.DRIVER, Me.Nom & " Datareceived", "Type '" & aryLine(index - 1) & "' " & aryLine(0) & ";" & aryLine(2) & ";" & aryLine(3) & ";" & aryLine(index - 1))
+                            ' traitement(aryLine(0), aryLine(index - 1), aryLine(2), aryLine(3))
                             Dim RF_SubData() As String
                             Dim RF_Mode As String = aryLine(0)
                             Dim RF_Protocol As String = aryLine(2)
@@ -1124,18 +872,9 @@ Public Class Driver_RFLink
             Select Case mode
                 Case 20
                     '_Server.Log(TypeLog.DEBUG, TypeSource.DRIVER, Me.Nom & " Traitement : ", "Noeud " & adresse & " Sensor " & " Type " & msgtype & " Valeur " & valeur)
-                    '                    valeur = vbNull
+                    'valeur = vbNull
                     deviceupdate = True
                     Select Case type
-                        'Case ""
-                        '    _Type = "APPAREIL"
-                        '    homidom_type = 0
-                        'Case ""
-                        '    _Type = "AUDIO"
-                        '    homidom_type = 1
-                        Case "BARO"
-                            _Type = "BAROMETRE"
-                            homidom_type = 2
                         Case "BAT"
                             _Type = "BATTERIE"
                             homidom_type = 3
@@ -1145,12 +884,10 @@ Public Class Driver_RFLink
                                 Case "LOW"
                                     valeur = 0
                             End Select
-                            'Case ""
-                            '    _Type = "COMPTEUR"
-                            '    homidom_type = 4
-                            'Case ""
-                            '    _Type = "CONTACT"
-                            '    homidom_type = 5
+                        Case "BARO"
+                            _Type = "BAROMETRE"
+                            homidom_type = 2
+                            valeur = Convert.ToInt32(valeur, 16) * 0.1
                         Case "SMOKEALERT", "PIR"
                             _Type = "DETECTEUR"
                             homidom_type = 6
@@ -1166,40 +903,36 @@ Public Class Driver_RFLink
                         Case "WATT", "KWATT"
                             _Type = "ENERGIEINSTANTANEE"
                             homidom_type = 8
-                            'Case ""
-                            '    _Type = "ENERGIETOTALE"
-                            '    homidom_type = 9
-                            'Case ""
-                            '    _Type = "FREEBOX"
-                            '    homidom_type = 10
-                            'Case ""
-                            '    _Type = "GENERIQUEBOOLEEN"
-                            '    homidom_type = 11
-                            'Case ""
-                            '    _Type = "GENERIQUESTRING"
-                            '    homidom_type = 12
-                        Case "HSTATUS", "BFORECAST", "LUX", "AWINSP", "WINGS", "WINCHL", "WINTMP", "CHIME", "CO2", "SOUND", "DIST", "METER", "VOLT", "CURRENT"
+                        Case "HSTATUS", "BFORECAST", "CHIME", "SMOKEALERT", "CO2", "SOUND", "DIST", "METER", "VOLT", "CURRENT"
                             _Type = "GENERIQUEVALUE"
                             homidom_type = 13
+                        Case "AWINSP"
+                            _Type = "GENERIQUEVALUE"
+                            homidom_type = 13
+                            valeur = Convert.ToInt32(valeur, 16) * 0.1
+                        Case "LUX", "WINGS"
+                            _Type = "GENERIQUEVALUE"
+                            homidom_type = 13
+                            valeur = Convert.ToInt32(valeur, 16)
+                        Case "WINCHL", "WINTMP"
+                            _Type = "GENERIQUEVALUE"
+                            homidom_type = 13
+                            valeur = Convert.ToInt32(valeur, 16)
+                            If (valeur > 32768) Then
+                                valeur = 32768 - valeur
+                            End If
+                            valeur = valeur * 0.1
                         Case "HUM"
                             _Type = "HUMIDITE"
                             homidom_type = 14
-                            'Case ""
-                            '    _Type = "LAMPE"
-                            '    homidom_type = 15
-                            'Case ""
-                            '    _Type = "METEO"
-                            '    homidom_type = 16
-                            'Case ""
-                            '    _Type = "MULTIMEDIA"
-                            '    homidom_type = 17
                         Case "RAIN"
                             _Type = "PLUIECOURANT"
                             homidom_type = 18
-                            valeur = Convert.ToInt32(valeur, 16)
+                            valeur = Convert.ToInt32(valeur, 16) * 0.1
                         Case "RAINTOT"
                             _Type = "PLUIETOTAL"
                             homidom_type = 19
+                            valeur = Convert.ToInt32(valeur, 16) * 0.1
                         Case "SWITCH"
                             _Type = "SWITCH"
                             homidom_type = 20
@@ -1209,28 +942,23 @@ Public Class Driver_RFLink
                                 Case "OFF"
                                     valeur = False
                             End Select
-                            'Case ""
-                            '    _Type = "TELECOMMANDE"
-                            '    homidom_type = 21
                         Case "TEMP"
                             _Type = "TEMPERATURE"
                             homidom_type = 22
-                            valeur = Convert.ToInt32(valeur, 16) * 0.1
-                            'Case ""
-                            '    _Type = "TEMPERATURECONSIGNE"
-                            '    homidom_type = 23
+                            valeur = Convert.ToInt32(valeur, 16)
+                            If (valeur > 32768) Then
+                                valeur = 32768 - valeur
+                            End If
+                            valeur = valeur * 0.1
                         Case "UV"
                             _Type = "UV"
                             homidom_type = 24
+                            valeur = Convert.ToInt32(valeur, 16) * 0.1
                         Case "WINSP"
                             _Type = "VITESSEVENT"
                             homidom_type = 25
+                            valeur = Convert.ToInt32(valeur, 16) * 0.1
                             'Case ""
-                            '    _Type = "VOLET"
-                            '    homidom_type = 26
-                            'Case ""
-                            '    _Type = "LAMPERGBW"
-                            '    homidom_type = 27
                         Case Else
                             _Server.Log(TypeLog.ERREUR, TypeSource.DRIVER, Me.Nom & " Process", "Le type de device n'appartient pas à ce driver: " & type)
                             Exit Sub
@@ -1243,16 +971,6 @@ Public Class Driver_RFLink
                             listedevices.Item(0).Value = valeur
                             _Server.Log(TypeLog.INFO, TypeSource.DRIVER, Me.Nom & " Reception : ", "Noeud N° " & adresse & " capteur/actionneur " & " Valeur " & valeur)
                         End If
-                        '                    ElseIf (listedevices.Count > 1) Then
-                        '                        For i As Integer = 0 To listedevices.Count - 1
-                        '                            If listedevices.Item(i).adresse2.ToUpper() = adresse2.ToUpper() Then
-                        '                                If deviceupdate = True Then
-                        '                                    listedevices.Item(i).Value = valeur
-                        '                                    _Server.Log(TypeLog.INFO, TypeSource.DRIVER, Me.Nom & " Reception : ", "Noeud N° " & adresse & " capteur/actionneur " & adresse2 & " Valeur " & valeur)
-                        '                                End If
-                        '                            End If
-                        '                        Next
-                        '                        '_Server.Log(TypeLog.ERREUR, TypeSource.DRIVER, Me.Nom & " Process", "Plusieurs devices correspondent à : " & adresse)
                     Else
                         'si autodiscover = true ou modedecouverte du serveur actif alors on crée le composant sinon on logue
                         If autodevice = True Then

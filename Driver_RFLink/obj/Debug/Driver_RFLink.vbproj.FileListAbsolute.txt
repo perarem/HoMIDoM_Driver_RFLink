@@ -25,3 +25,12 @@ C:\Users\Pierre\Documents\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Deb
 C:\Users\Pierre\Documents\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.dll
 C:\Users\Pierre\Documents\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.xml
 C:\Users\Pierre\Documents\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.pdb
+C:\GitHub\MesDrivers\DEBUG\Drivers\Driver_RFLink.dll
+C:\GitHub\MesDrivers\DEBUG\Drivers\Driver_RFLink.pdb
+C:\GitHub\MesDrivers\DEBUG\Drivers\Driver_RFLink.xml
+C:\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.Resources.resources
+C:\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.vbproj.GenerateResource.Cache
+C:\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.dll
+C:\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.xml
+C:\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.pdb
+C:\GitHub\MesDrivers\HoMIDoM-RFLink\Driver_RFLink\obj\Debug\Driver_RFLink.vbprojResolveAssemblyReference.cache
