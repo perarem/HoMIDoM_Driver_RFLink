@@ -101,7 +101,7 @@ Driver_RFLink
 	<param name="sender"></param>
 	<param name="e"></param>
 	<remarks></remarks>
-</member><member name="M:Driver_RFLink.Driver_RFLink.traitement(System.String,System.String,System.String,System.String)">
+</member><member name="M:Driver_RFLink.Driver_RFLink.traitement(System.String,System.String,System.String,System.String,System.String)">
 	<summary>Traite les paquets reçus</summary>
 	<remarks></remarks>
 </member>
